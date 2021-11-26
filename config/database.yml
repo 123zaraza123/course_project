@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: vladislav
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: todo_application_development
+
+test:
+  <<: *default
+  database: todo_application_test
+
+production:
+  <<: *default
+  database: todo_application_production
+  username: todo_application
+  password: <%= ENV['TODO_APPLICATION_DATABASE_PASSWORD'] %>
